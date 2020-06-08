@@ -1,4 +1,4 @@
-function p = predictOneVsAll(all_theta, X)
+~function p = predictOneVsAll(all_theta, X)
 %PREDICT Predict the label for a trained one-vs-all classifier. The labels 
 %are in the range 1..K, where K = size(all_theta, 1). 
 %  p = PREDICTONEVSALL(all_theta, X) will return a vector of predictions
@@ -29,12 +29,9 @@ X = [ones(m, 1) X];
 %       are in rows, then, you can use max(A, [], 2) to obtain the max 
 %       for each row.
 %       
-
-
-
-
-
-
+predictions = sigmoid(X * all_theta');
+[~, indices] = max(predictions, [], 2);
+p = indices;
 
 % =========================================================================
 
